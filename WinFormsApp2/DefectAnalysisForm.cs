@@ -130,7 +130,6 @@ namespace WinFormsApp2
 
                 var (sev, score) = RiskScoring.Evaluate(depth, len, wid);
 
-                // Найти или создать тип дефекта
                 int typeId;
                 var result = Db.Scalar("SELECT id FROM defect_types WHERE name=@n",
                     new MySqlParameter("@n", typeName));
@@ -148,7 +147,6 @@ namespace WinFormsApp2
                     typeId = Convert.ToInt32(result);
                 }
 
-                // Вставка дефекта
                 Db.Exec(@"
                     INSERT INTO defects(inspection_id, kilometer, depth_percent, length_mm, width_mm, defect_type_id, severity, risk_score)
                     VALUES(@iid,@km,@dp,@l,@w,@t,@s,@r)",

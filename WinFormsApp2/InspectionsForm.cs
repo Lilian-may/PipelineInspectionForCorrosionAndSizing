@@ -133,8 +133,8 @@ namespace WinFormsApp2
                 }
 
                 Db.Exec(@"
-            INSERT INTO inspections(pipeline_id, inspection_date, tool_type_id, speed_mps, coverage_percent, status)
-            VALUES(@pid,@d,@t,@s,@c,@st)",
+                INSERT INTO inspections(pipeline_id, inspection_date, tool_type_id, speed_mps, coverage_percent, status)
+                VALUES(@pid,@d,@t,@s,@c,@st)",
                     new MySqlParameter("@pid", pid),
                     new MySqlParameter("@d", date),
                     new MySqlParameter("@t", toolId),
